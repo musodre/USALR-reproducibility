@@ -1,14 +1,25 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite the associated manuscript and the archived software release."
+
 title: "USALR fluid reproducibility package"
 type: software
+
 authors:
   - family-names: "Sodré"
     given-names: "Murilo"
-year: 2026
+
+version: "1.0.1-reproducible"
+date-released: "2026-08-07"
+
 license: MIT
-repository-code: "TO_BE_ADDED_AFTER_GITHUB_PUBLICATION"
-identifiers:
-  - type: other
-    value: "TO_BE_ADDED_AFTER_ZENODO_DEPOSITION"
-    description: "Zenodo DOI"
+
+repository-code: "https://github.com/musodre/USALR-reproducibility"
+
+keywords:
+  - SALR
+  - molecular dynamics
+  - LAMMPS
+  - thermodynamic anomalies
+  - diffusion anomaly
+  - structural anomalies
+  - reproducibility
