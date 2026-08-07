@@ -1,0 +1,57 @@
+# ============================================================
+# Python
+# ============================================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# ============================================================
+# Raw simulation data
+# ============================================================
+data/raw/*
+!data/raw/.gitkeep
+
+# ============================================================
+# Regenerated derived data
+# ============================================================
+data/derived/*
+!data/derived/.gitkeep
+
+# ============================================================
+# Regenerated outputs
+# ============================================================
+outputs/figures/*
+!outputs/figures/.gitkeep
+
+outputs/tables/*
+!outputs/tables/.gitkeep
+
+# ============================================================
+# Legacy/generated diffusion working directories
+# ============================================================
+analysis/
+plots/
+
+# ============================================================
+# Temporary/editor/system files
+# ============================================================
+*.log
+.DS_Store
+*~
+*.swp
+*.swo
+
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+build/
+dist/
+*.egg-info/

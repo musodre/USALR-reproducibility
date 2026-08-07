@@ -1,0 +1,92 @@
+#Polymer-Grafted Nanoparticles in 3D
+
+#Inicialization
+#---------------
+
+units lj
+dimension 3
+boundary p p p
+atom_style sphere
+variable Text equal 66666666
+variable Pext equal 55555555
+variable rho  equal 0.10
+
+
+lattice bcc ${rho} origin 0.0 0.0 0.0
+region simbox block 0 8 0 8 0 8
+create_box 1 simbox
+create_atoms 1 box
+
+
+
+variable tstep equal 0.001
+timestep ${tstep}
+
+velocity all create ${Text} 87287
+variable Tdamp equal 100*${tstep}
+variable Pdamp equal 1000*${tstep}
+
+variable Nrun equal 2500000
+variable Nsnaps equal 200
+variable Nequil equal 5000000
+variable Nf equal 200
+variable Nther equal 5*${Nf}
+variable Ne equal 1
+variable Nr equal ${Nf}/${Ne}
+variable Ndump equal ${Nrun}/${Nsnaps}
+variable Nr_rdf equal 0.5*${Nrun}/${Ne}
+variable myvol equal vol
+variable myenthalpy equal enthalpy
+variable dens equal density
+
+pair_style table linear 1000
+pair_coeff 1 1 pot_Uyes04pol.dat LJGauss 3.5
+
+neighbor 0.3 bin
+neigh_modify every 20 delay 0 check no
+fix  equil all nve/limit 0.1
+
+thermo_style custom step temp press density pe ke enthalpy
+thermo_modify flush yes
+thermo  ${Nf}
+run     ${Nequil}
+unfix equil
+fix   equil2 all nve
+fix 2 all temp/rescale 100 ${Text} ${Text} 0.02 0.5
+run             ${Nequil}
+unfix equil2
+unfix 2
+
+variable Pstr format Pext %4.2f
+variable Tstr format Text %4.2f
+shell mkdir P_${Pstr}
+
+fix integrate all npt temp ${Text} ${Text} ${Tdamp} iso ${Pext} ${Pext} ${Pdamp}
+
+
+shell mkdir P_${Pstr}/msds
+compute msd all msd com yes
+fix msd all ave/time 100 10 1000 c_msd[4] file P_${Pstr}/msds/P_${Pstr}_T_${Tstr}.msd
+
+
+pair_write 1 1 1000 r 0.016 10.0 lammpspot_Uyes04pol.dat LJGauss
+
+
+shell mkdir P_${Pstr}/rdfs
+compute rdf all rdf 1000  1 1
+fix rdf all ave/time ${Ne} ${Nr_rdf} ${Nrun} c_rdf[*] file P_${Pstr}/rdfs/P_${Pstr}_T_${Tstr}.rdf mode vector
+
+compute kinetic all ke
+
+shell mkdir P_${Pstr}/thermo
+fix avtem all ave/time 1 ${Nther} ${Nther}  c_thermo_temp c_thermo_press v_myvol v_dens c_thermo_pe c_kinetic v_myenthalpy file P_${Pstr}/thermo/outvars_P_${Pstr}_T_${Tstr}.profile ave running
+
+
+shell mkdir P_${Pstr}/trajs
+dump trj all custom ${Ndump} P_${Pstr}/trajs/P_${Pstr}_T_${Tstr}.lammpstrj id type x y z vx vy vz
+#dump trj all xyz ${Ndump} P_${Pstr}/trajs/P_${Pstr}_T_${Tstr}.xyz
+
+run             ${Nrun}
+
+shell mkdir P_${Pstr}/restart
+write_restart P_${Pstr}/restart/restart_P_${Pstr}_T_${Tstr}.mix

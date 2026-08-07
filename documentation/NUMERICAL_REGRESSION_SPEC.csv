@@ -1,0 +1,15 @@
+label,regenerated_relative_to_derived,reference_relative_to_project,mode,key_columns,duplicate_policy,atol,rtol,notes
+diffusion_global,asymptotic_diffusion/D_asymptotic_global.dat,python-inputs/somepress/analysis/asymptotic_diffusion/D_asymptotic_global.dat,table,"P,T",mean,1e-12,1e-9,Primary self-diffusion table
+s2_global,s2/s2_global.dat,python-inputs/somepress/analysis/s2/s2_global.dat,table,"P,T",mean,1e-12,1e-9,Two-body excess entropy
+tau_global,tau/tau_global.dat,python-inputs/somepress/analysis/tau/tau_global.dat,table,"P,T",mean,1e-12,1e-9,Translational order metric
+thermodynamic_response,thermo_response/thermodynamic_response_functions.dat,python-inputs/thermo_response/thermodynamic_response_functions.dat,table,"P,T",error,1e-10,1e-8,Thermodynamic response functions
+tmd_physical_branch,thermo_response/TMD_branch_tracking/TMD_physical_branch.dat,python-inputs/thermo_response/TMD_branch_tracking/TMD_physical_branch.dat,table,P,error,1e-10,1e-8,Global physical TMD branch; historical intermediate caveat remains
+shell_descriptors_fixed_window,shell_resolved_structure/shell_descriptors_global.dat,python-inputs/shell_resolved_structure/shell_descriptors_global.dat,table,"P,T",error,1e-10,1e-8,Fixed-window shell-resolved descriptors
+structure_factor_area,static_structure_factor/Asalr_analysis/SALR_area_summary.dat,plots/static_structure_factor/Asalr_analysis/SALR_area_summary.dat,table,"P,T",error,1e-10,1e-8,Integrated SALR reciprocal-space descriptor
+structure_dynamics_hierarchy,structure_dynamics_hierarchy/structure_dynamics_hierarchy_data.dat,python-inputs/structure_dynamics_hierarchy/structure_dynamics_hierarchy_data.dat,table,"P,T",error,1e-10,1e-8,Common-state scale-selective descriptor table
+author_master_common,final_author_table/author_master_table_common.dat,python-inputs/plots/final_author_table/author_master_table_common.dat,table,"P,T",error,1e-10,1e-8,Derivative-analysis master table; historical broad-shell Rn
+derivative_master,derivative_structure_dynamics/derivative_master.dat,python-inputs/plots/derivative_structure_dynamics/derivative_master.dat,table,"P,T",error,1e-9,1e-7,Local derivative table
+dynamic_boundaries,derivative_boundary_alignment/dynamic_boundaries.dat,python-inputs/plots/derivative_boundary_alignment/dynamic_boundaries.dat,table,T,error,1e-9,1e-7,Resolved dynamic anomaly boundaries
+cluster_state_summary,cluster_analysis/cluster_state_summary.dat,python-inputs/plots/cluster_analysis/cluster_state_summary.dat,table,"P,T",error,1e-9,1e-7,Cluster observables; production R_CLUSTER=1.20
+cluster_dynamic_master,cluster_dynamic_alignment/cluster_dynamic_master.dat,python-inputs/plots/cluster_dynamic_alignment/cluster_dynamic_master.dat,table,"P,T",error,1e-9,1e-7,Cluster observables aligned to dynamic boundary
+selected_cluster_states,cluster_size_distributions/selected_cluster_states.dat,python-inputs/plots/cluster_size_distributions/selected_cluster_states.dat,table,"T,region",error,1e-9,1e-7,Selected before/near/after cluster states
