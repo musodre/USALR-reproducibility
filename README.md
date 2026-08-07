@@ -2,13 +2,9 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21844211.svg)](https://doi.org/10.5281/zenodo.21844211)
 
 
-This repository contains the simulation inputs, numerical-analysis scripts,
-figure renderers, provenance records, and numerical-regression tools supporting
-the manuscript **“Hidden multiscale structural signatures of thermodynamic and
-dynamic anomalies in a SALR fluid.”**
+This repository contains the simulation inputs, numerical-analysis scripts, figure renderers, provenance records, and numerical-regression tools supporting the manuscript **“Compression-enhanced mobility during finite-cluster growth in a soft colloidal SALR fluid.”**
 
-This is the consolidated release tree. Development snapshots (“stages”) are not
-part of the public workflow.
+This is the consolidated release tree. Development snapshots (“stages”) are not part of the public workflow.
 
 ## Reproducibility status
 
